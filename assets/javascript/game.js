@@ -1,19 +1,26 @@
 // variables used for gameplay
 var words = ["Rattlesnake", "Saloon", "Revolver"];
 var guesses = 6;
-var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
 
 var challenge = words[Math.floor(Math.random() * words.length)];
+console.log(challenge);
 
-
-var answerArray = [];
+var answerArray = [""];
 
 for (var i = 0; i < challenge.length; i++) {
-    answerArray[i] = "_"
+    answerArray[i] = "_ "
+    console.log(answerArray[i]);
+    document.getElementById("hangman")
+
 };
 
+
 var remainingLetters = challenge.length;
+console.log(remainingLetters);
+
+
+
+
 
 // press any button to begin
 document.onkeyup = function(event) {
@@ -24,7 +31,5 @@ document.onkeyup = function(event) {
         if (challenge[i] ===userGuess) {
           answerArray[i] = userGuess;
         }
-     
-        document.getElementById("hangman").innerHTML = answerArray.join(" ");
       }
 }
