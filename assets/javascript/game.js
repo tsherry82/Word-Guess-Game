@@ -4,17 +4,19 @@ alert("The guessing game where you can claim your fame, or guess to loose and sw
 // variables used for gameplay
 var words = ["rattlesnake", "saloon", "revolver"];
 var guesses = 7;
+document.getElementById("guessesLeft").innerHTML ="Guesses you have left " + guesses;
+
 var wins = 0
 
 // randonmly select a word
 var challenge = words[Math.floor(Math.random() * words.length)];
 
-var answerArray = [""];
+var answerArray = [" "];
 
 for (var i = 0; i < challenge.length; i++) {
   answerArray[i] = "_ "
   // console.log(answerArray[i]);
-  document.getElementById("hangman").innerHTML = answerArray
+  document.getElementById("hangman").innerHTML = answerArray[i]
 };
 
 var remainingLetters = challenge.length;
@@ -29,26 +31,30 @@ document.onkeyup = function (event) {
     if (challenge[j] == userGuess) {
       answerArray[j] = challenge[j]
       correctGuess = true;
-      document.getElementById("letterGuessed").innerHTML += userGuess;
+      // document.getElementById("letterGuessed").innerHTML += userGuess;
       document.getElementById("hangman").innerHTML = answerArray;
     }
   }
+  // if you cant figure it out and lose
   if (correctGuess === false) {
     guesses--;
+    document.getElementById("guessesLeft").innerHTML ="Guesses you have left " + guesses;
     document.getElementById("letterGuessed").innerHTML += userGuess;
   }
-  if (guesses === 0) {
-    alert("Sheriff Hang That Man!");
-  }
-  document.getElementById("guessesLeft").innerHTML ="Guesses you have left " + guesses;
-}
-var filledSpaces = answerArray.join(" ")
 
+  if (guesses === 0) {
+    alert("Sheriff, Hang That Man!");
+  }
+}
+
+// if you complete the game and win...
+var filledSpaces = answerArray.join(" ")
 
 document.getElementById("hangman").innerHTML += filledSpaces;
 
 if (filledSpaces == "rattlesnake" || filledSpaces == "saloon" || filledSpaces == "revolver") {
   alert("You live to see another day Cowboy!")
+  
 }
 
 // hints
