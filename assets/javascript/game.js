@@ -1,5 +1,5 @@
 // variables used for gameplay
-var words = ["Rattlesnake", "Saloon", "Revolver"];
+var words = ["rattlesnake", "saloon", "revolver"];
 var guesses = 6;
 
 var challenge = words[Math.floor(Math.random() * words.length)];
@@ -13,30 +13,32 @@ for (var i = 0; i < challenge.length; i++) {
   document.getElementById("hangman").innerHTML = answerArray
 };
 
-for (var i = 0; i < guesses.length; i++) {
-  guesses[i] = guesses[i](-1);
-  console.log(guesses);
-}
+// for (var i = 0; i < guesses.length; i++) 
 
 
 var remainingLetters = challenge.length;
-console.log(remainingLetters);
-
-
-
-
-
+// console.log(remainingLetters);
 
 
 // press any button to begin
 document.onkeyup = function (event) {
 
+  var correctGuess = false 
   var userGuess = event.key
-  document.getElementById("letterGuessed").innerHTML = userGuess;
-
-  for (var i = 0; i < challenge.length; i++) {
-    if (challenge[i] === userGuess) {
-      answerArray[i] = userGuess;
-    }
+  
+    for (var j = 0; j < challenge.length; j++) {
+      if (challenge[j] == userGuess) {
+        answerArray[j] = challenge[j]
+        correctGuess = true;
+        remainingLetters--;
+        console.log(remainingLetters);
+      document.getElementById("letterGuessed").innerHTML += userGuess;
+      document.getElementById("hangman").innerHTML = answerArray;
   }
 }
+if (correctGuess === false){
+  guesses--
+  console.log(guesses)
+}
+}
+var filledSpaces = answerArray.join("")
