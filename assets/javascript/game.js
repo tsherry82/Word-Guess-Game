@@ -11,7 +11,7 @@ var wins = 0
 // randonmly select a word
 var challenge = words[Math.floor(Math.random() * words.length)];
 
-var answerArray = [" "];
+var answerArray = [];
 
 for (var i = 0; i < challenge.length; i++) {
   answerArray[i] = "_ "
@@ -39,22 +39,24 @@ document.onkeyup = function (event) {
   if (correctGuess === false) {
     guesses--;
     document.getElementById("guessesLeft").innerHTML ="Guesses you have left " + guesses;
+
     document.getElementById("letterGuessed").innerHTML += userGuess;
   }
 
   if (guesses === 0) {
-    alert("Sheriff, Hang That Man!");
+    alert("Sheriff, hang that man!");
   }
 }
 
 // if you complete the game and win...
-var filledSpaces = answerArray.join(" ")
+
+var filledSpaces = answerArray.join(" ");
+
 
 document.getElementById("hangman").innerHTML += filledSpaces;
 
 if (filledSpaces == "rattlesnake" || filledSpaces == "saloon" || filledSpaces == "revolver") {
   alert("You live to see another day Cowboy!")
-  
 }
 
 // hints
