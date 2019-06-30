@@ -4,7 +4,7 @@ alert("The guessing game where you can claim your fame, or guess to loose and sw
 // variables used for gameplay
 var words = ["rattlesnake", "saloon", "revolver"];
 var guesses = 7;
-document.getElementById("guessesLeft").innerHTML = "Guesses you have left: " + guesses;
+document.getElementById("guessesLeft").innerHTML ="Guesses you have left: " + guesses;
 
 var wins = 0
 
@@ -19,7 +19,9 @@ for (var i = 0; i < challenge.length; i++) {
   document.getElementById("hangman").innerHTML = answerArray[i]
 };
 
-var remainingLetters = challenge.length;
+function clear() {
+  document.getElementById("hangman", "lettersGuessed", "guessesLeft", "hints").reset();
+}
 
 // press any button to begin to play the game
 document.onkeyup = function (event) {
@@ -38,7 +40,7 @@ document.onkeyup = function (event) {
   // if you cant figure it out and lose
   if (correctGuess === false) {
     guesses--;
-    document.getElementById("guessesLeft").innerHTML = "Guesses you have left: " + guesses;
+    document.getElementById("guessesLeft").innerHTML ="Guesses you have left: " + guesses;
     document.getElementById("letterGuessed").innerHTML += userGuess;
   }
 
@@ -50,7 +52,7 @@ document.onkeyup = function (event) {
 // if you complete the game and win...
 
 var filledSpaces = answerArray.join();
-console.log(answerArray.join());
+console.log(filledSpaces);
 
 
 document.getElementById("hangman").innerHTML += filledSpaces;
