@@ -46,20 +46,22 @@ document.onkeyup = function (event) {
 
   if (guesses === 0) {
     alert("Sheriff, hang that man!");
+    document.getElementById("hangman", "lettersGuessed", "guessedLeft", "hints").reset();
   }
+  var filledSpaces = answerArray.join();
+console.log(filledSpaces);
+
+
+document.getElementById("hangman").innerHTML = filledSpaces;
+
+if (filledSpaces == "rattlesnake" || filledSpaces == "saloon" || filledSpaces == "revolver") {
+  alert("You live to see another day Cowboy!");
+}
 }
 
 // if you complete the game and win...
 
-var filledSpaces = answerArray.join();
-console.log(filledSpaces);
 
-
-document.getElementById("hangman").innerHTML += filledSpaces;
-
-if (filledSpaces == "rattlesnake" || filledSpaces == "saloon" || filledSpaces == "revolver") {
-  alert("You live to see another day Cowboy!")
-}
 
 // hints
 
